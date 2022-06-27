@@ -15,6 +15,7 @@ export interface UserDocument extends Document {
   password: string;
   createdAt: Date;
   updatedAt: Date;
+  doesPasswordMatch: any
 }
 
 
