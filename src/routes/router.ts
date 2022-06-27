@@ -1,6 +1,7 @@
 import express from 'express';
 import { register, login } from '@/controllers/authController';
 import asyncHandler from 'express-async-handler'
+import { isAuthenticated } from '@/middlewares/isAuthenticated';
 
 const router = express.Router();
 

@@ -39,7 +39,9 @@ export async function login(req: Request, res: Response) {
     issuer: config.jwt.issuer,
   }
 
-  const token = jwt.sign(payload, config.jwt.secret)
+  const token = jwt.sign(payload, config.jwt.secret, {
+    expiresIn: "24h",
+  })
 
   const result = {
     user: {
