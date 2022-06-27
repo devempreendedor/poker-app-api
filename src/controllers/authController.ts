@@ -31,7 +31,7 @@ export async function login(req: Request, res: Response) {
   )
 
   const payload = {
-    sub: user.email,
+    sub: user.id,
     iat: Math.floor(Date.now() / 1000),
     exp:
       Math.floor(Date.now() / 1000) +
@@ -39,9 +39,7 @@ export async function login(req: Request, res: Response) {
     issuer: config.jwt.issuer,
   }
 
-  const token = jwt.sign(payload, config.jwt.secret, {
-    expiresIn: "24h",
-  })
+  const token = jwt.sign(payload, config.jwt.secret)
 
   const result = {
     user: {

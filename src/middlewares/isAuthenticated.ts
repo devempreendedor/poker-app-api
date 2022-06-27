@@ -4,10 +4,7 @@ import createHttpError from "http-errors";
 import jwt from "jsonwebtoken"
 
 async function isAuthenticated(req: any, res: Response, next: NextFunction) {
-  const token = req.headers["authorization"].split('Bearer ')[1]
-
-  console.log("#### token =>", token)
-
+  const token = req.headers["authorization"]?.split('Bearer ')[1]
   if (!token) {
     return next(createHttpError(401, "A token is required for authentication"));
   }
